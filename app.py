@@ -8,6 +8,7 @@ from controllers.person_controller import Person_controller
 from logic.src.person import Person
 from controllers.appoitments_controller import Appoitments_controller
 from logic.src.appoitments import Appoitments
+from fastapi.responses import HTMLResponse
 
 # Initializing the FastAPI app
 st_object2 = Appoitments_controller()
@@ -23,6 +24,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+@app.get("/", response_class=HTMLResponse)
+def message():
+    with open("index.html", "r") as file:
+        content = file.read()
+    return content
 
 # A POST endpoint to create a new person object in the database
 
