@@ -1,7 +1,7 @@
 /venv/
 *.pyc
 *.pyo
-prueba4/
-prueba/
+prueba4.txt
+apuntes.txt
+controllers/prueba.txt
 *.pdf
-```
