@@ -13,7 +13,6 @@ starlette==0.27.0
 typing_extensions==4.7.1
 uvicorn==0.22.0
 psycopg2==2.9.1
-base64==1.0.1
 reportlab==3.6.0
 
 
