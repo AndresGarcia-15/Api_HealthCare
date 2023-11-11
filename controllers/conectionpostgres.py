@@ -3,10 +3,7 @@ from psycopg2 import DatabaseError
 from fastapi import HTTPException
 from fastapi.responses import JSONResponse
 import base64
-import os
-import io
 import psycopg2
-from reportlab.pdfgen import canvas
 from psycopg2 import DatabaseError
 
 conexion = psycopg2.connect(user= 'healthcare_o0ig_user',
