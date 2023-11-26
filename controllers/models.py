@@ -62,3 +62,10 @@ class User(BaseModel):
     email: constr(max_length=150)
     username: constr(max_length=150)
     #typeperson: constr(max_length=50)
+
+class Laboratory(BaseModel):
+    test1: constr(max_length=75)
+    test2: constr(max_length=75)
+    test3: constr(max_length=75)
+    test4: constr(max_length=75)
+    test5: constr(max_length=75)

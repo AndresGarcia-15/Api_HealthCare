@@ -360,5 +360,48 @@ def id_user(id_auth):
         return result
     except DatabaseError as e:
         raise e
+    
 
+def insert_laboratory(test1, test2, test3, test4, test5):
+    try:
+        with psycopg2.connect(user='healthcare_o0ig_user',
+                              password='RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
+                              host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+                              port=5432,
+                              database='healthcare_o0ig') as conexion:
+            with conexion.cursor() as cursor:
+                sql = 'INSERT INTO laboratorytests (test1, test2, test3, test4, test5) VALUES (%s, %s, %s, %s,%s)'
+                cursor.execute(sql, (test1, test2, test3, test4, test5))
+                conexion.commit()
+    except DatabaseError as e:
+        raise e
+
+def select_laboratory(testid):
+    try:
+        with psycopg2.connect(user='healthcare_o0ig_user',
+                              password='RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
+                              host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+                              port=5432,
+                              database='healthcare_o0ig')       as conexion:
+            with conexion.cursor() as cursor:
+                sql = 'SELECT * FROM laboratorytests WHERE testid = %s'
+                cursor.execute(sql, (testid,))
+                result = cursor.fetchone()
+        return result
+    except DatabaseError as e:
+        raise e
+    
+def delete_laboratory(testid):
+    try:
+        with psycopg2.connect(user='healthcare_o0ig_user',
+                              password='RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
+                              host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+                              port=5432,
+                              database='healthcare_o0ig') as conexion:
+            with conexion.cursor() as cursor:
+                sql = 'DELETE FROM laboratorytests WHERE testid = %s'
+                cursor.execute(sql, (testid,))
+                conexion.commit()
+    except DatabaseError as e:
+        raise e
 
