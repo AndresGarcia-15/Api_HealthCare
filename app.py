@@ -6,7 +6,7 @@ from fastapi import FastAPI, Form, Request, status
 
 from fastapi.responses import HTMLResponse
 
-from controllers.conectionpostgres import select_appointments, insert_appointments, delete_appointments, update_appointments, select_person, insert_person, delete_person, update_person, select_medicalhistorial, insert_medicalhistorial, delete_medicalhistorial, update_medicalhistorial,get_pdf_json,insert_diagnosticimaging,delete_diagnosticimaging_by_id,insert_person,allusers,id_user, select_diagnosticimaging, insert_laboratory
+from controllers.conectionpostgres import select_appointments, insert_appointments, delete_appointments, update_appointments, select_person, insert_person, delete_person, update_person, select_medicalhistorial, insert_medicalhistorial, delete_medicalhistorial, update_medicalhistorial,get_pdf_json,insert_diagnosticimaging,delete_diagnosticimaging_by_id,insert_person,allusers,id_user, select_diagnosticimaging, insert_laboratory, select_laboratory
 from controllers.models import Appointment, Medicalhistorial, Diagnosticimaging,User,Laboratory
 from controllers.utils import VerifyToken
 from fastapi.security import HTTPBearer
@@ -171,7 +171,7 @@ async def get_users1(id_auth:str):
 
 @app.get("/laboratory/{testid}",tags=["Laboratorios"])
 async def get_laboratory(testid: int):
-    return select_person(testid)
+    return select_laboratory(testid)
 
 @app.post("/laboratory/",tags=["Laboratorios"])
 async def agregar_laboratory(laboratory: Laboratory,token: str = Depends(token_auth_scheme)):
@@ -183,5 +183,5 @@ async def agregar_laboratory(laboratory: Laboratory,token: str = Depends(token_a
 
 @app.delete("/laboratory/{testid}",tags=["Laboratorios"])
 async def delete_laboratory(testid: int):
-    delete_person(testid)
+    delete_laboratory(testid)
     return {"message": "Laboratory deleted successfully"}
