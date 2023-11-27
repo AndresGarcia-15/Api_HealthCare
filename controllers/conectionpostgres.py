@@ -329,6 +329,42 @@ def insert_person(id_auth,email,username):
     except DatabaseError as e:
         raise e
 
+def update_person_role(id_auth, typeperson='patient'):
+    try:
+        with psycopg2.connect(user='healthcare_o0ig_user',
+                              password='RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
+                              host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+                              port=5432,
+                              database='healthcare_o0ig') as conexion:
+            with conexion.cursor() as cursor:
+                # Asegurarse de que el rol sea 'admin' o 'patient'
+                typeperson = 'admin' if typeperson == 'admin' else 'patient'
+                
+                sql = 'UPDATE person SET typeperson = %s WHERE id_auth = %s'
+                cursor.execute(sql, (typeperson, id_auth))
+                conexion.commit()
+    except DatabaseError as e:
+        raise e
+
+    
+def insert_person(id_auth, email, username, is_admin=False):
+    try:
+        with psycopg2.connect(user='healthcare_o0ig_user',
+                              password='RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
+                              host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+                              port=5432,
+                              database='healthcare_o0ig') as conexion:
+            with conexion.cursor() as cursor:
+                sql = 'INSERT INTO person (id_auth, email, username, role) VALUES (%s, %s, %s, %s)'
+                
+                # Determinar el rol del usuario
+                role = 'admin' if is_admin else 'patient'
+                
+                cursor.execute(sql, (id_auth, email, username, role))
+                conexion.commit()
+    except DatabaseError as e:
+        raise e
+
 
 
 
@@ -354,12 +390,13 @@ def id_user(id_auth):
                               port=5432,
                               database='healthcare_o0ig') as conexion:
             with conexion.cursor() as cursor:
-                sql = 'SELECT id_auth FROM person WHERE id_auth = %s'
+                sql = 'SELECT * FROM person WHERE id_auth = %s'
                 cursor.execute(sql, (id_auth,))
                 result = cursor.fetchone()
         return result
     except DatabaseError as e:
         raise e
+
     
 
 def insert_laboratory(test1, test2, test3, test4, test5):

@@ -67,3 +67,7 @@ class Laboratory(BaseModel):
     test3: constr(max_length=75)
     test4: constr(max_length=75)
     test5: constr(max_length=75)
+
+class PersonUpdateRole(BaseModel):
+    id_auth: constr(max_length=150)
+    role: constr(max_length=150)

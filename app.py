@@ -2,12 +2,10 @@ from fastapi import FastAPI
 from fastapi import HTTPException,Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, Form, Request, status
-
-
+from psycopg2 import DatabaseError
 from fastapi.responses import HTMLResponse
-
-from controllers.conectionpostgres import select_appointments, insert_appointments, delete_appointments, update_appointments, select_person, insert_person, delete_person, update_person, select_medicalhistorial, insert_medicalhistorial, delete_medicalhistorial, update_medicalhistorial,get_pdf_json,insert_diagnosticimaging,delete_diagnosticimaging_by_id,insert_person,allusers,id_user, select_diagnosticimaging, insert_laboratory, select_laboratory
-from controllers.models import Appointment, Medicalhistorial, Diagnosticimaging,User,Laboratory
+from controllers.conectionpostgres import select_appointments, insert_appointments, delete_appointments, update_appointments, select_person, insert_person, delete_person, update_person, select_medicalhistorial, insert_medicalhistorial, delete_medicalhistorial, update_medicalhistorial,get_pdf_json,insert_diagnosticimaging,delete_diagnosticimaging_by_id,insert_person,allusers,id_user, select_diagnosticimaging, insert_laboratory, select_laboratory,update_person_role
+from controllers.models import Appointment, Medicalhistorial, Diagnosticimaging,User,Laboratory,PersonUpdateRole
 from controllers.utils import VerifyToken
 from fastapi.security import HTTPBearer
 app = FastAPI()
@@ -185,3 +183,11 @@ async def agregar_laboratory(laboratory: Laboratory,token: str = Depends(token_a
 async def delete_laboratory(testid: int):
     delete_laboratory(testid)
     return {"message": "Laboratory deleted successfully"}
+
+@app.put("/update-role",tags=["Usuarios"])
+async def update_role(person_update: PersonUpdateRole):
+    try:
+        update_person_role(person_update.id_auth, person_update.role)
+        return {"message": "Role updated successfully"}
+    except DatabaseError:
+        raise HTTPException(status_code=500, detail="Database error")
