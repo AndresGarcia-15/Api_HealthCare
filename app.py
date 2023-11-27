@@ -14,10 +14,11 @@ app = FastAPI()
 app.title = "Healthcare Provider API"
 token_auth_scheme = HTTPBearer()
 # Configuración de CORS
-origins = ["http://localhost:5173"]  # Agrega aquí el dominio del cliente
+origins = ["http://localhost:5173"]  
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],  # Actualiza esto con los orígenes permitidos en producción
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -110,7 +111,7 @@ def get_pdf(llave_images: int):
     return get_pdf_json(llave_images) 
 '''
 
-@app.post("/pdf/", tags=["diagnosticimaging"])
+@app.post("/diagnosticimaging/", tags=["diagnosticimaging"])
 async def create_pdf(diagnosticimaging: Diagnosticimaging,token: str = Depends(token_auth_scheme)):
     result = VerifyToken(token.credentials).verify()
     if not result.get("status"):
@@ -120,8 +121,7 @@ async def create_pdf(diagnosticimaging: Diagnosticimaging,token: str = Depends(t
         diagnosticimaging.diagnosticos_secundarios,
         diagnosticimaging.plan_de_tratamiento,
         diagnosticimaging.medicamentos_recetados,
-        diagnosticimaging.procedimientos_realizados,
-        diagnosticimaging.diagnosticimages
+        diagnosticimaging.procedimientos_realizados
     )
     return {"message": "diagnosticimaging created successfully"}
 

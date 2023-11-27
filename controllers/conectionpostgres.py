@@ -271,7 +271,7 @@ finally:
 
 '''
 
-def insert_diagnosticimaging(diagnostico_principal, diagnosticos_secundarios, plan_de_tratamiento, medicamentos_recetados, procedimientos_realizados,diagnosticimages):
+def insert_diagnosticimaging(diagnostico_principal, diagnosticos_secundarios, plan_de_tratamiento, medicamentos_recetados, procedimientos_realizados):
     try:
         with psycopg2.connect(user='healthcare_o0ig_user',
                               password='RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
@@ -279,8 +279,8 @@ def insert_diagnosticimaging(diagnostico_principal, diagnosticos_secundarios, pl
                               port=5432,
                               database='healthcare_o0ig') as conexion:
             with conexion.cursor() as cursor:
-                sql = 'INSERT INTO diagnosticimaging (diagnostico_principal, diagnosticos_secundarios, plan_de_tratamiento, medicamentos_recetados, procedimientos_realizados,diagnosticimages) VALUES (%s, %s, %s, %s,%s,%s)'
-                cursor.execute(sql, (diagnostico_principal, diagnosticos_secundarios, plan_de_tratamiento, medicamentos_recetados, procedimientos_realizados,diagnosticimages))
+                sql = 'INSERT INTO diagnosticimaging (diagnostico_principal, diagnosticos_secundarios, plan_de_tratamiento, medicamentos_recetados, procedimientos_realizados) VALUES (%s, %s, %s, %s,%s)'
+                cursor.execute(sql, (diagnostico_principal, diagnosticos_secundarios, plan_de_tratamiento, medicamentos_recetados, procedimientos_realizados))
                 conexion.commit()
     except DatabaseError as e:
         raise e

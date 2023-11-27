@@ -49,13 +49,11 @@ class Medicalhistorial(BaseModel):
     
 
 class Diagnosticimaging(BaseModel):
-    
     diagnostico_principal: constr(max_length=75)
     diagnosticos_secundarios: constr(max_length=75)
     plan_de_tratamiento: constr(max_length=75)
     medicamentos_recetados: constr(max_length=75)
     procedimientos_realizados: constr(max_length=75)
-    diagnosticimages: bytes
 
 class User(BaseModel):
     idClient: constr(max_length=150)
