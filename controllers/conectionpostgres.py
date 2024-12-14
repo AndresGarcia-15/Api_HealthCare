@@ -9,20 +9,20 @@ import psycopg2
 from reportlab.pdfgen import canvas
 from psycopg2 import DatabaseError
 
-conexion = psycopg2.connect(user= 'healthcare_o0ig_user',
-                                  password= 'RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                                  host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+conexion = psycopg2.connect(user= 'healthcare_u5d9_user',
+                                  password= 'VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                                  host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                                   port=5432,
-                                  database='healthcare_o0ig')
+                                  database='healthcare_u5d9')
 
      
 def select_appointments(id_cita):
     try:
-        with psycopg2.connect(user= 'healthcare_o0ig_user',
-                                  password= 'RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                                  host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user= 'healthcare_u5d9_user',
+                                  password= 'VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                                  host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                                   port=5432,
-                                  database='healthcare_o0ig') as conexion:
+                                  database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 sql = 'SELECT * FROM appointments WHERE id_cita = %s'
                 cursor.execute(sql, (id_cita,))
@@ -33,11 +33,11 @@ def select_appointments(id_cita):
 
 def insert_appointments(date, time, doctor, prescription):
     try:
-        with psycopg2.connect(user= 'healthcare_o0ig_user',
-                                  password= 'RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                                  host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user= 'healthcare_u5d9_user',
+                                  password= 'VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                                  host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                                   port=5432,
-                                  database='healthcare_o0ig') as conexion:
+                                  database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 sql = 'INSERT INTO appointments (date, time, doctor, prescription) VALUES (%s, %s, %s, %s)'
                 cursor.execute(sql, (date, time, doctor, prescription))
@@ -48,11 +48,11 @@ def insert_appointments(date, time, doctor, prescription):
 
 def delete_appointments(id_cita):
     try:
-        with psycopg2.connect(user= 'healthcare_o0ig_user',
-                                  password= 'RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                                  host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user= 'healthcare_u5d9_user',
+                                  password= 'VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                                  host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                                   port=5432,
-                                  database='healthcare_o0ig') as conexion:
+                                  database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 sql = 'DELETE FROM appointments WHERE id_cita = %s'
                 cursor.execute(sql, (id_cita,))
@@ -64,11 +64,11 @@ def delete_appointments(id_cita):
 
 def update_appointments(date, time, doctor, prescription, id_cita):
     try:
-        with psycopg2.connect(user= 'healthcare_o0ig_user',
-                                  password= 'RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                                  host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user= 'healthcare_u5d9_user',
+                                  password= 'VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                                  host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                                   port=5432,
-                                  database='healthcare_o0ig') as conexion:
+                                  database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 sql = 'UPDATE appointments SET date = %s, time = %s, doctor = %s, prescription = %s WHERE id_cita = %s'
                 cursor.execute(sql, (date, time, doctor, prescription, id_cita))
@@ -79,11 +79,11 @@ def update_appointments(date, time, doctor, prescription, id_cita):
     
 def select_person(id_person):
     try:
-        with psycopg2.connect(user= 'healthcare_o0ig_user',
-                                  password= 'RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                                  host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user= 'healthcare_u5d9_user',
+                                  password= 'VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                                  host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                                   port=5432,
-                                  database='healthcare_o0ig')       as conexion:
+                                  database='healthcare_u5d9')       as conexion:
             with conexion.cursor() as cursor:
                 sql = 'SELECT * FROM person WHERE id_person = %s'
                 cursor.execute(sql, (id_person,))
@@ -95,11 +95,11 @@ def select_person(id_person):
 
 def insert_person( typeperson, occupation):
     try:
-        with psycopg2.connect(user= 'healthcare_o0ig_user',
-                                  password= 'RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                                  host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user= 'healthcare_u5d9_user',
+                                  password= 'VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                                  host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                                   port=5432,
-                                  database='healthcare_o0ig') as conexion:
+                                  database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 sql = 'INSERT INTO person (typeperson, ocupation) VALUES (%s, %s)'
                 cursor.execute(sql, (typeperson, occupation))
@@ -110,11 +110,11 @@ def insert_person( typeperson, occupation):
 
 def delete_person(id_person):
     try:
-        with psycopg2.connect(user= 'healthcare_o0ig_user',
-                                  password= 'RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                                  host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user= 'healthcare_u5d9_user',
+                                  password= 'VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                                  host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                                   port=5432,
-                                  database='healthcare_o0ig') as conexion:
+                                  database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 sql = 'DELETE FROM person WHERE id_person = %s'
                 cursor.execute(sql, (id_person,))
@@ -125,11 +125,11 @@ def delete_person(id_person):
 
 def update_person(typeperson, occupation, id_person):
     try:
-        with psycopg2.connect(user= 'healthcare_o0ig_user',
-                                  password= 'RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                                  host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user= 'healthcare_u5d9_user',
+                                  password= 'VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                                  host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                                   port=5432,
-                                  database='healthcare_o0ig') as conexion:
+                                  database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 sql = 'UPDATE person SET typeperson = %s, ocupation = %s WHERE id_person = %s'
                 cursor.execute(sql, (typeperson, occupation, id_person))
@@ -140,11 +140,11 @@ def update_person(typeperson, occupation, id_person):
     
 def select_medicalhistorial(id):
     try:
-        with psycopg2.connect(user= 'healthcare_o0ig_user',
-                                  password= 'RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                                  host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user= 'healthcare_u5d9_user',
+                                  password= 'VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                                  host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                                   port=5432,
-                                  database='healthcare_o0ig') as conexion:
+                                  database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 sql = 'SELECT * FROM medicalhistorial WHERE id = %s'
                 cursor.execute(sql, (id,))
@@ -156,11 +156,11 @@ def select_medicalhistorial(id):
 
 def insert_medicalhistorial(fullname, age, daybirthday, genre, placebirth, emergency_person, diseases, allergies):
     try:
-        with psycopg2.connect(user= 'healthcare_o0ig_user',
-                                  password= 'RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                                  host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user= 'healthcare_u5d9_user',
+                                  password= 'VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                                  host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                                   port=5432,
-                                  database='healthcare_o0ig') as conexion:
+                                  database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 sql = 'INSERT INTO medicalhistorial (fullname, age, daybirthday, genre, placebirth, emergency_person, diseases, allergies) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)'
                 cursor.execute(sql, (fullname, age, daybirthday, genre, placebirth, emergency_person, diseases, allergies))
@@ -171,11 +171,11 @@ def insert_medicalhistorial(fullname, age, daybirthday, genre, placebirth, emerg
 
 def delete_medicalhistorial(id):
     try:
-        with psycopg2.connect(user= 'healthcare_o0ig_user',
-                                  password= 'RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                                  host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user= 'healthcare_u5d9_user',
+                                  password= 'VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                                  host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                                   port=5432,
-                                  database='healthcare_o0ig') as conexion:
+                                  database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 sql = 'DELETE FROM medicalhistorial WHERE id = %s'
                 cursor.execute(sql, (id,))
@@ -186,11 +186,11 @@ def delete_medicalhistorial(id):
 
 def update_medicalhistorial(fullname, age, daybirthday, genre, placebirth, emergency_person, diseases, allergies,id_medicalhistorial):
     try:
-        with psycopg2.connect(user= 'healthcare_o0ig_user',
-                                  password= 'RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                                  host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user= 'healthcare_u5d9_user',
+                                  password= 'VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                                  host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                                   port=5432,
-                                  database='healthcare_o0ig') as conexion:
+                                  database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 sql = 'UPDATE medicalhistorial SET fullname = %s, age = %s, daybirthday = %s, genre = %s, placebirth = %s, emergency_person = %s, diseases = %s, allergies = %s WHERE id = %s'
                 cursor.execute(sql, (fullname, age, daybirthday, genre, placebirth, emergency_person, diseases, allergies,id_medicalhistorial))
@@ -202,11 +202,11 @@ def update_medicalhistorial(fullname, age, daybirthday, genre, placebirth, emerg
 
 def get_pdf_json(llave_images):
     try:
-        with psycopg2.connect(user= 'healthcare_o0ig_user',
-                                  password= 'RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                                  host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user= 'healthcare_u5d9_user',
+                                  password= 'VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                                  host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                                   port=5432,
-                                  database='healthcare_o0ig') as conexion:
+                                  database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 cursor.execute("SELECT diagnosticimages FROM diagnosticimaging WHERE llave_images = %s;", (llave_images,))
                 pdf_data = cursor.fetchone()
@@ -273,11 +273,11 @@ finally:
 
 def insert_diagnosticimaging(diagnostico_principal, diagnosticos_secundarios, plan_de_tratamiento, medicamentos_recetados, procedimientos_realizados):
     try:
-        with psycopg2.connect(user='healthcare_o0ig_user',
-                              password='RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                              host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user='healthcare_u5d9_user',
+                              password='VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                              host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                               port=5432,
-                              database='healthcare_o0ig') as conexion:
+                              database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 sql = 'INSERT INTO diagnosticimaging (diagnostico_principal, diagnosticos_secundarios, plan_de_tratamiento, medicamentos_recetados, procedimientos_realizados) VALUES (%s, %s, %s, %s,%s)'
                 cursor.execute(sql, (diagnostico_principal, diagnosticos_secundarios, plan_de_tratamiento, medicamentos_recetados, procedimientos_realizados))
@@ -287,11 +287,11 @@ def insert_diagnosticimaging(diagnostico_principal, diagnosticos_secundarios, pl
 
 def select_diagnosticimaging(llave_images):
     try:
-        with psycopg2.connect(user='healthcare_o0ig_user',
-                              password='RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                              host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user='healthcare_u5d9_user',
+                              password='VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                              host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                               port=5432,
-                              database='healthcare_o0ig')       as conexion:
+                              database='healthcare_u5d9')       as conexion:
             with conexion.cursor() as cursor:
                 sql = 'SELECT * FROM diagnosticimaging WHERE id_diagnostic = %s'
                 cursor.execute(sql, (llave_images,))
@@ -302,11 +302,11 @@ def select_diagnosticimaging(llave_images):
     
 def delete_diagnosticimaging_by_id(diagnosticimaging_id):
     try:
-        with psycopg2.connect(user='healthcare_o0ig_user',
-                              password='RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                              host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user='healthcare_u5d9_user',
+                              password='VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                              host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                               port=5432,
-                              database='healthcare_o0ig') as conexion:
+                              database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 sql = 'DELETE FROM diagnosticimaging WHERE id_diagnostic = %s'
                 cursor.execute(sql, (diagnosticimaging_id,))
@@ -317,11 +317,11 @@ def delete_diagnosticimaging_by_id(diagnosticimaging_id):
 
 def insert_person(id_auth,email,username):
     try:
-        with psycopg2.connect(user='healthcare_o0ig_user',
-                              password='RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                              host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user='healthcare_u5d9_user',
+                              password='VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                              host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                               port=5432,
-                              database='healthcare_o0ig') as conexion:
+                              database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 sql = 'INSERT INTO person (id_auth, email, username) VALUES (%s, %s, %s)'
                 cursor.execute(sql, (id_auth, email, username))
@@ -331,11 +331,11 @@ def insert_person(id_auth,email,username):
 
 def update_person_role(id_auth, typeperson='patient'):
     try:
-        with psycopg2.connect(user='healthcare_o0ig_user',
-                              password='RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                              host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user='healthcare_u5d9_user',
+                              password='VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                              host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                               port=5432,
-                              database='healthcare_o0ig') as conexion:
+                              database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 # Asegurarse de que el rol sea 'admin' o 'patient'
                 typeperson = 'admin' if typeperson == 'admin' else 'patient'
@@ -349,11 +349,11 @@ def update_person_role(id_auth, typeperson='patient'):
     
 def insert_person(id_auth, email, username, is_admin=False):
     try:
-        with psycopg2.connect(user='healthcare_o0ig_user',
-                              password='RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                              host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user='healthcare_u5d9_user',
+                              password='VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                              host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                               port=5432,
-                              database='healthcare_o0ig') as conexion:
+                              database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 sql = 'INSERT INTO person (id_auth, email, username, role) VALUES (%s, %s, %s, %s)'
                 
@@ -370,11 +370,11 @@ def insert_person(id_auth, email, username, is_admin=False):
 
 def allusers():
     try:
-        with psycopg2.connect(user='healthcare_o0ig_user',
-                              password='RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                              host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user='healthcare_u5d9_user',
+                              password='VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                              host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                               port=5432,
-                              database='healthcare_o0ig') as conexion:
+                              database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 cursor.execute('SELECT * FROM person')
                 return cursor.fetchall()
@@ -384,11 +384,11 @@ def allusers():
 
 def id_user(id_auth):
     try:
-        with psycopg2.connect(user='healthcare_o0ig_user',
-                              password='RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                              host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user='healthcare_u5d9_user',
+                              password='VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                              host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                               port=5432,
-                              database='healthcare_o0ig') as conexion:
+                              database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 sql = 'SELECT * FROM person WHERE id_auth = %s'
                 cursor.execute(sql, (id_auth,))
@@ -401,11 +401,11 @@ def id_user(id_auth):
 
 def insert_laboratory(test1, test2, test3, test4, test5):
     try:
-        with psycopg2.connect(user='healthcare_o0ig_user',
-                              password='RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                              host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user='healthcare_u5d9_user',
+                              password='VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                              host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                               port=5432,
-                              database='healthcare_o0ig') as conexion:
+                              database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 sql = 'INSERT INTO laboratorytests (test1, test2, test3, test4, test5) VALUES (%s, %s, %s, %s,%s)'
                 cursor.execute(sql, (test1, test2, test3, test4, test5))
@@ -415,11 +415,11 @@ def insert_laboratory(test1, test2, test3, test4, test5):
 
 def select_laboratory(testid):
     try:
-        with psycopg2.connect(user='healthcare_o0ig_user',
-                              password='RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                              host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user='healthcare_u5d9_user',
+                              password='VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                              host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                               port=5432,
-                              database='healthcare_o0ig')       as conexion:
+                              database='healthcare_u5d9')       as conexion:
             with conexion.cursor() as cursor:
                 sql = 'SELECT * FROM laboratorytests WHERE testid = %s'
                 cursor.execute(sql, (testid,))
@@ -430,11 +430,11 @@ def select_laboratory(testid):
     
 def delete_laboratory(testid):
     try:
-        with psycopg2.connect(user='healthcare_o0ig_user',
-                              password='RW6WWdFotQmdTMaifvkfNW9JTfk87As6',
-                              host='dpg-cl058g2s1bgc738vdvn0-a.oregon-postgres.render.com',
+        with psycopg2.connect(user='healthcare_u5d9_user',
+                              password='VpysLtqkizS9XVqrGSml2jDh5StfZbYJ',
+                              host='dpg-cteerq5ds78s73de4380-a.oregon-postgres.render.com',
                               port=5432,
-                              database='healthcare_o0ig') as conexion:
+                              database='healthcare_u5d9') as conexion:
             with conexion.cursor() as cursor:
                 sql = 'DELETE FROM laboratorytests WHERE testid = %s'
                 cursor.execute(sql, (testid,))
